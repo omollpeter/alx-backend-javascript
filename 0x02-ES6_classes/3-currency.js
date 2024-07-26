@@ -1,4 +1,4 @@
-export default class HolbertonCourse {
+export default class Currency {
   constructor(code, name) {
     if (typeof code !== "string") {
       throw TypeError("Code must be a string");
