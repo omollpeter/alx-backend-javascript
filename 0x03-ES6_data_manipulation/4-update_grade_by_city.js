@@ -1,4 +1,7 @@
 export default function updateStudentGradeByCity(listOfStudents, city, grades) {
+  if (!(listOfStudents instanceof Array)) {
+    return [];
+  }
   const studGrade = listOfStudents.filter((stud) => stud.location === city).map((student) => {
     for (let i = 0; i < grades.length; i++) {
       if (grades[i].studentId === student.id) {
