@@ -1,4 +1,7 @@
 export default function cleanSet(set, startString) {
+  if (!startString) {
+    return '';
+  }
   const array = Array.from(set);
   let str = '';
 
