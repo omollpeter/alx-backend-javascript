@@ -1,5 +1,4 @@
 import { readDatabase } from "../utils";
-import url from "url";
 
 export default class StudentsController {
     static getAllStudents(request, response) {
@@ -11,22 +10,22 @@ export default class StudentsController {
             Object.keys(result).sort().forEach(field => {
                 displayStudents += `Number of students in ${field}: ${result[field].length}. List: ${result[field].join(", ")}\n`
             })
-            response.status(200).send(displayStudents);
+            response.status(200).send(displayStudents.trim());
         }).catch((reason) => {
             response.status(500).send("Cannot load the database");
         })
     }
 
     static getAllStudentsByMajor(request, response) {
-        const queryObject = url.parse(request.url, true).query();
+        const { major } = request.params;
 
-        if (queryObject.major !== "CS" || queryObject.major !== "SWE") {
+        if (!["CS", "SWE"].includes(major)) {
             response.status(500).send("Major parameter must be CS or SWE")
         }
 
         const path = process.argv[2];
         readDatabase(path).then((result) => {
-            response.status(200).send(`List: ${result[queryObject.major].join(", ")}\n`);
+            response.status(200).send(`List: ${result[major].join(", ")}`);
         }).catch(reason => {
             response.status(500).send("Cannot load the database")
         })
