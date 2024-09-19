@@ -1,4 +1,4 @@
-import calculateNumber from "./2-calcul.js";
+import calculateNumber from "./2-calcul_chai.js";
 import { expect } from "chai";
 
 describe("calculateNumber", () => {
