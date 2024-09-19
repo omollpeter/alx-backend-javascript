@@ -8,4 +8,8 @@ describe("getPaymentTokenFromAPI", () => {
     });
     done();
   });
+
+  it("Should return nothing", () => {
+    expect(getPaymentTokenFromAPI(false)).to.equal(undefined);
+  })
 });
