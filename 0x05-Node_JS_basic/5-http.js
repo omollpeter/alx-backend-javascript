@@ -12,8 +12,8 @@ const app = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/plain');
     countStudents(dbPath).then((result) => {
       res.end(`This is the list of our students\n${result}`);
-    }).catch(error => {
-      res.end(`This is the list of our students\n${error.message}`)
+    }).catch((error) => {
+      res.end(`This is the list of our students\n${error.message}`);
     });
   }
 });
