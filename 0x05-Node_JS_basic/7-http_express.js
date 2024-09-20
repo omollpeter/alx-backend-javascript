@@ -11,6 +11,8 @@ app.get('/students', (req, res) => {
   const dbPath = process.argv[2];
   countStudents(dbPath).then((result) => {
     res.send(`This is the list of our students\n${result}`);
+  }).catch((error) => {
+    res.sendend(`This is the list of our students\n${error.message}`);
   });
 });
 
